@@ -92,11 +92,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Terminals "
-set $workspace2 "2: Chrome "
-set $workspace3 "3: Editor "
-set $workspace4 "4: Settings "
-set $workspace10 "10: Spotify "
+set $workspace1 "1:Terminals "
+set $workspace2 "2:Chrome "
+set $workspace3 "3:Editor "
+set $workspace4 "4:Setting "
+set $workspace10 "10:Spotify "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -124,8 +124,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Google-chrome"] $workspace2
 assign [class="systemsettings"] $workspace4
+assign [class="Geany"] $workspace3
 assign [class="Spotify"] $workspace10
-assign [class="spotify"] $workspace9
 
 #lock the screen
 bindsym $mod+Shift+x exec i3lock
@@ -229,6 +229,6 @@ exec systemsettings5
 #exec --no-startup-id i3-msg 'workspace1; exec spotify'
 
 #Enable touchpad click
-exec xinput set-prop 12 279 1
+exec xinput set-prop 14 279 1
 #Enable natural scrolling
-exec xinput set-prop 12 287 1
+exec xinput set-prop 14 287 1
