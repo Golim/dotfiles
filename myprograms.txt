@@ -1,0 +1,12 @@
+#Editor
+gedit
+geany
+
+#Browser
+chrome
+
+#i3
+i3 i3status i3lock xbacklight conky feh dmenu
+
+#Gestione display
+arandr
