@@ -11,8 +11,6 @@ export PS1="\[\033[38;5;1m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u\[$(tput sgr0)\]\
 alias ll='ls -la'
 alias cl='clear'
 alias l='ls -l'
-alias .='cd ..'
-alias ..='cd ../..'
 
 wifi () {
 	case $1 in
