@@ -1,2 +1,0 @@
-xrandr | grep connected
-xrandr --output HDMI-1 --preferred
