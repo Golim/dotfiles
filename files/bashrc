@@ -8,14 +8,27 @@ fi
 export PS1="\[\033[38;5;1m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u\[$(tput sgr0)\]\[\033[38;5;1m\]:\[$(tput sgr0)\]\[\033[38;5;2m\]\W\[$(tput sgr0)\]\[\033[38;5;1m\]]\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;1m\]>\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
 
-alias ll='ls -la'
+alias ll='ls -la -c -g --color=auto'
+alias l='ls -l -c -g --color=auto'
+alias +='ls -la -c -g --color=auto'
+
 alias cl='clear'
-alias l='ls -l'
+
 alias .='cd ..'
 alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+
 alias poff='poweroff'
-alias +='ls -la'
+
 alias edit='mousepad'
+
+# Folder
+alias doc='cd /home/golim/Documenti'
+alias ing='cd /home/golim/Documenti/IngegneriaDelSoftware2'
+alias hci='cd /home/golim/Documenti/humanComputerInteraction'
+alias se2='cs /home/golim/Documenti/se2_project'
 
 wifi () {
 	case $1 in
@@ -23,7 +36,7 @@ wifi () {
 			nmcli general status;;
 		"off") nmcli radio wifi off
 			nmcli general status;;
-		"status"|"stat") nmcli general status;;
+		"status" | "stat") nmcli general status;;
 		*) echo "Command not found" ;;
 	esac
 }
@@ -35,7 +48,7 @@ mkcd () {
 
 cs () {
 	cd "$1"
-	ls
+	ls --color=auto
 }
 
 ex () {
