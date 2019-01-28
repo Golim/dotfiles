@@ -1,0 +1,294 @@
+;============================================================;
+;															 ;
+;															 ;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗	 ;
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗	 ;
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝	 ;
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗	 ;
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║	 ;
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ;
+;															 ;
+;															 ;
+;============================================================;
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #9e9e9e
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+focused-background = #444
+focused-foreground = #efe
+focused-underline  = #e53935
+
+urgent-background = #e53935
+urgent-foreground = #efe
+
+
+[bar/mybar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 35
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+
+;===================;
+;                   ;
+;       FONT        ;
+;                   ;
+;===================;
+
+font-0 = fixed:pixelsize=13;1
+font-1 = Font Awesome:style=regular:size=13:antialias=true;2”
+font-2 = siji:pixelsize=13;1
+
+
+
+modules-left = bspwm i3
+modules-center = date
+modules-right = spotify volume battery backlight flameshot powermenu
+
+
+
+
+
+tray-position = right
+tray-padding = 2
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+
+
+
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = false
+
+strip-wsnumbers = true
+
+index-sort = true
+
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = true
+
+fuzzy-match = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 5
+label-mode-background = ${colors.background}
+
+label-focused = %name% %icon%
+label-focused-foreground = ${colors.focused-foreground}
+label-focused-background = ${colors.focused-background}
+label-focused-underline  = #e53935
+label-focused-padding = 5
+
+label-unfocused = %name% %icon%
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background}
+label-unfocused-padding = 5
+
+label-visible = %name% %icon%
+label-visible-underline = #555555
+label-visible-padding = 5
+
+label-urgent = %name% %icon%
+label-urgent-foreground = ${colors.urgent-foreground}
+label-urgent-background = ${colors.urgent-background}
+label-urgent-padding = 5
+
+
+ws-icon-1 = "1:1: Terminal "
+ws-icon-2 = "2:2: Browser "
+ws-icon-3 = "3:3: Editor "
+ws-icon-4 = "4:4: Various "
+ws-icon-5 = "5:5: Office "
+ws-icon-6 = "6:6: Settings "
+ws-icon-7 = "7"
+ws-icon-8 = "8"
+ws-icon-9 = "9"
+ws-icon-0 = "10:10: Spotify "
+
+
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "  %d/%m/%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %time% %date%
+
+
+
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spotify.sh
+tail = true
+interval = 0
+format-underline = #1db954
+click-left = exec playerctl play-pause
+
+
+
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+format-muted =  0%
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+poll-interval = 5
+
+format-charging =   <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+label-full = Fully charged
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+
+
+
+
+
+[module/backlight]
+type = internal/xbacklight
+
+output = eDP1
+
+enable-scroll = true
+
+format =  <label>
+label = %percentage%%
+
+
+
+
+[module/flameshot]
+type = custom/text
+content = 
+
+click-left = exec flameshot gui
+
+
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open =   
+label-open-foreground = ${colors.focused-foreground}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 10
+margin-bottom = 10

@@ -4,16 +4,23 @@
 echo "Creating files folder..."
 mkdir -p files
 cd files
-echo "Done!"
 
-echo "Copying i3 configurations..."
+echo "Copying i3 config file..."
 cp ~/.i3/config i3.conf
-echo "Done!"
+cp ~/.display.sh display.sh
 
-echo "Copying i3status configurations..."
+echo "Copying i3status config file..."
 cp ~/.i3status/config i3status.conf
-echo "Done!"
 
 echo "Copying bashrc..."
 cp ~/.bashrc bashrc
+
+echo "Copying zshrc..."
+cp ~/.zshrc zshrc
+
+echo "Copying polybar config file and scripts..."
+mkdir polybar
+cd polybar
+cp ~/.config/polybar/* .
+
 echo "All done!"
