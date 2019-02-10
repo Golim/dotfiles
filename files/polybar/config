@@ -1,62 +1,97 @@
-;============================================================;
-;															 ;
-;															 ;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗	 ;
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗	 ;
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝	 ;
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗	 ;
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║	 ;
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ;
-;															 ;
-;															 ;
-;============================================================;
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
 
-[colors]
-background = #222
-background-alt = #444
-foreground = #9e9e9e
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+;===================;
+;      COLORS       ;
+;===================;
 
-focused-background = #444
-focused-foreground = #efe
-focused-underline  = #e53935
+; Color from https://github.com/adi1090x/polybar-themes
+[color]
 
-urgent-background = #e53935
-urgent-foreground = #efe
+trans = #00000000
+white = #FFFFFF
+black = #000000
 
+bg = #FFFFFF
+fg = #FFFFFF
+fg-alt = #454545
+
+acolor = #FFFFFF
+curgent = #EF5350
+coccupied = #42A5F5
+
+shade1 = #0D47A1
+shade2 = #1565C0
+shade3 = #1976D2
+shade4 = #1E88E5
+shade5 = #2196F3
+shade6 = #42A5F5
+shade7 = #64B5F6
+shade8 = #90CAF9
+ashade8 = #2C2C2C
+
+## Material Colors
+red         = #e53935
+pink        = #d81b60
+purple      = #8e24aa
+deep-purple = #5e35b1
+indigo      = #3949ab
+blue        = #1e88e5
+light-blue  = #039be5
+cyan        = #00acc1
+teal        = #00897b
+green       = #43a047
+light-green = #7cb342
+lime        = #c0ca33
+yellow      = #fdd835
+amber       = #ffb300
+orange      = #fb8c00
+deep-orange = #f4511e
+brown       = #6d4c41
+grey        = #757575
+blue-gray   = #546e7a
+
+;===================;
+;        BAR        ;
+;===================;
 
 [bar/mybar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = eDP1
 width = 100%
 height = 35
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+radius = 10
 fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${color.bg}
+foreground = ${color.fg}
 
 line-size = 3
-line-color = #f00
 
-border-size = 4
+border-top-size = 10
+border-right-size = 30
+border-left-size = 30
+border-bottom-size = 0
+
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
-module-margin-left = 2
-module-margin-right = 2
-
+module-margin-left = 0
+module-margin-right = 0
 
 ;===================;
-;                   ;
 ;       FONT        ;
-;                   ;
 ;===================;
 
 font-0 = fixed:pixelsize=13;1
@@ -65,27 +100,32 @@ font-2 = siji:pixelsize=13;1
 
 
 
-modules-left = bspwm i3
+modules-left = bspwm i3 github
 modules-center = date
-modules-right = spotify volume battery backlight flameshot powermenu
-
-
-
+modules-right = spotify volume battery backlight flameshot
 
 
 tray-position = right
 tray-padding = 2
+
+
+tray-background = ${color.shade3}
+tray-foreground = ${color.fg}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 
 
-
+;===================;
+;      MODULES      ;
+;===================;
 
 
 [module/i3]
 type = internal/i3
+
+padding = 2
 
 pin-workspaces = false
 
@@ -103,40 +143,39 @@ fuzzy-match = true
 format = <label-state> <label-mode>
 
 label-mode = %mode%
-label-mode-padding = 5
-label-mode-background = ${colors.background}
+label-mode-padding = ${self.padding}
+label-mode-background = ${color.shade2}
+label-mode-foreground = ${color.fg}
 
 label-focused = %name% %icon%
-label-focused-foreground = ${colors.focused-foreground}
-label-focused-background = ${colors.focused-background}
-label-focused-underline  = #e53935
-label-focused-padding = 5
+label-focused-foreground = ${color.fg-alt}
+label-focused-background = ${color.shade8}
+label-focused-padding = ${self.padding}
 
 label-unfocused = %name% %icon%
-label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.background}
-label-unfocused-padding = 5
+label-unfocused-foreground = ${color.fg}
+label-unfocused-background = ${color.shade6}
+label-unfocused-padding = ${self.padding}
 
 label-visible = %name% %icon%
-label-visible-underline = #555555
-label-visible-padding = 5
+label-visible-padding = ${self.padding}
 
 label-urgent = %name% %icon%
-label-urgent-foreground = ${colors.urgent-foreground}
-label-urgent-background = ${colors.urgent-background}
-label-urgent-padding = 5
+label-urgent-foreground = ${color.fg}
+label-urgent-background = ${color.curgent}
+label-urgent-padding = ${self.padding}
 
 
-ws-icon-1 = "1:1: Terminal "
-ws-icon-2 = "2:2: Browser "
-ws-icon-3 = "3:3: Editor "
-ws-icon-4 = "4:4: Various "
-ws-icon-5 = "5:5: Office "
-ws-icon-6 = "6:6: Settings "
+ws-icon-1 = "1:1: "
+ws-icon-2 = "2:2: "
+ws-icon-3 = "3:3: "
+ws-icon-4 = "4:4: "
+ws-icon-5 = "5:5: "
+ws-icon-6 = "6:6: "
 ws-icon-7 = "7"
 ws-icon-8 = "8"
 ws-icon-9 = "9"
-ws-icon-0 = "10:10: Spotify "
+ws-icon-0 = "10:10: "
 
 
 
@@ -144,21 +183,25 @@ ws-icon-0 = "10:10: Spotify "
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
 
 label-urgent = %index%!
-label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
+
+
+[module/github]
+type = custom/text
+content = 
+content-padding = 5
+content-foreground = ${color.fg-alt}
+click-left = chromium https://www.github.com/golim
 
 
 
@@ -173,11 +216,13 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
 
-label = %time% %date%
+label = %time%%date%
 
+label-padding = 2
+
+label-foreground = ${color.fg-alt}
+label-underline = ${color.fg-alt}
 
 
 
@@ -186,9 +231,13 @@ type = custom/script
 exec = ~/.config/polybar/spotify.sh
 tail = true
 interval = 0
-format-underline = #1db954
+
 click-left = exec playerctl play-pause
 
+format-padding = 2
+
+format-background = ${color.shade8}
+format-foreground = ${color.fg-alt}
 
 
 
@@ -202,7 +251,11 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
+format-volume-padding = 2
+format-muted-padding = 2
 
+format-volume-background = ${color.shade7}
+format-muted-background = ${color.shade7}
 
 
 [module/battery]
@@ -218,7 +271,6 @@ format-discharging = <ramp-capacity> <label-discharging>
 
 label-charging = %percentage%%
 label-discharging = %percentage%%
-
 label-full = Fully charged
 
 ramp-capacity-0 = 
@@ -227,7 +279,16 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
+format-charging-padding = 2
+format-discharging-padding = 2
 
+format-charging-background = ${color.shade6}
+format-discharging-background = ${color.shade6}
+
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-1-foreground = ${color.red}
+ramp-capacity-foreground   = ${color.fg}
+ramp-capacity-4-foreground = ${color.green}
 
 
 
@@ -239,10 +300,12 @@ output = eDP1
 
 enable-scroll = true
 
-format =  <label>
-label = %percentage%%
+format = <label>
+label =  %percentage%%
 
+label-padding = 2
 
+label-background = ${color.shade5}
 
 
 [module/flameshot]
@@ -251,43 +314,30 @@ content = 
 
 click-left = exec flameshot gui
 
+content-padding = 4
+
+content-background = ${color.shade4}
+content-foreground = ${color.fg}
 
 
 
-[module/powermenu]
-type = custom/menu
 
-expand-right = true
+[module/wifi]
+type = custom/text
+content = 
 
-format-spacing = 1
+click-left = exec nm-applet
 
-label-open =   
-label-open-foreground = ${colors.focused-foreground}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+content-padding = 4
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
+content-background = ${color.shade3}
+content-foreground = ${color.fg}
 
 
 
 [settings]
 screenchange-reload = true
+
 
 [global/wm]
 margin-top = 10

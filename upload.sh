@@ -19,7 +19,7 @@ echo "Copying zshrc..."
 cp ~/.zshrc zshrc
 
 echo "Copying polybar config file and scripts..."
-mkdir polybar
+mkdir -p polybar
 cd polybar
 cp ~/.config/polybar/* .
 
