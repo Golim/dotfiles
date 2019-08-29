@@ -18,48 +18,48 @@
 ; Color from https://github.com/adi1090x/polybar-themes
 [color]
 
+shade1 = #FFFFFF
+shade2 = #FFFFFF
+shade3 = #FFFFFF
+shade4 = #FFFFFF
+shade5 = #FFFFFF
+shade6 = #FFFFFF
+shade7 = #FFFFFF
+shade8 = #FFFFFF
+ashade8 = #FFFFFF
 trans = #00000000
 white = #FFFFFF
 black = #000000
 
 bg = #FFFFFF
-fg = #FFFFFF
-fg-alt = #454545
+fg = #2E2E2E
+fg-alt = #424242
 
-acolor = #FFFFFF
-curgent = #EF5350
-coccupied = #42A5F5
-
-shade1 = #0D47A1
-shade2 = #1565C0
-shade3 = #1976D2
-shade4 = #1E88E5
-shade5 = #2196F3
-shade6 = #42A5F5
-shade7 = #64B5F6
-shade8 = #90CAF9
-ashade8 = #2C2C2C
+acolor = #039be5
+curgent = #e53935
+coccupied = #43a047
 
 ## Material Colors
-red         = #e53935
-pink        = #d81b60
-purple      = #8e24aa
+
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
 deep-purple = #5e35b1
-indigo      = #3949ab
-blue        = #1e88e5
-light-blue  = #039be5
-cyan        = #00acc1
-teal        = #00897b
-green       = #43a047
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
 light-green = #7cb342
-lime        = #c0ca33
-yellow      = #fdd835
-amber       = #ffb300
-orange      = #fb8c00
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
 deep-orange = #f4511e
-brown       = #6d4c41
-grey        = #757575
-blue-gray   = #546e7a
+brown = #6d4c41
+grey = #eef0f2
+blue-gray = #546e7a
 
 ;===================;
 ;        BAR        ;
@@ -69,7 +69,62 @@ blue-gray   = #546e7a
 monitor = eDP1
 width = 100%
 height = 35
-radius = 10
+radius = 1
+fixed-center = true
+
+background = ${color.bg}
+foreground = ${color.fg}
+
+line-size = 3
+
+border-top-size = 10
+border-right-size = 30
+border-left-size = 30
+border-bottom-size = 0
+
+border-color = #00000000
+
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+;===================;
+;       FONT        ;
+;===================;
+
+font-0 = Fantasque Sans Mono:pixelsize=14;2"
+font-1 = Font Awesome:style=regular:size=13:antialias=true;2”
+font-2 = siji:pixelsize=13;1
+
+modules-left = i3 github
+modules-center = spotify
+modules-right = volume backlight battery date
+
+;===================;
+;       TRAY        ;
+;===================;
+
+tray-position = right
+tray-padding = 2
+
+
+tray-background = ${color.shade4}
+tray-foreground = ${color.fg}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+;===================;
+;    SECOND BAR     ;
+;===================;
+[bar/second]
+monitor = HDMI1
+width = 100%
+height = 35
+radius = 1
 fixed-center = true
 
 background = ${color.bg}
@@ -90,9 +145,6 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-;===================;
-;       FONT        ;
-;===================;
 
 font-0 = fixed:pixelsize=13;1
 font-1 = Font Awesome:style=regular:size=13:antialias=true;2”
@@ -100,21 +152,11 @@ font-2 = siji:pixelsize=13;1
 
 
 
-modules-left = bspwm i3 github
+modules-left = bspwm i3
 modules-center = date
-modules-right = spotify volume battery backlight flameshot
-
-
-tray-position = right
-tray-padding = 2
-
-
-tray-background = ${color.shade3}
-tray-foreground = ${color.fg}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
 
 
 ;===================;
@@ -125,7 +167,7 @@ cursor-scroll = ns-resize
 [module/i3]
 type = internal/i3
 
-padding = 2
+padding = 1
 
 pin-workspaces = false
 
@@ -143,39 +185,46 @@ fuzzy-match = true
 format = <label-state> <label-mode>
 
 label-mode = %mode%
-label-mode-padding = ${self.padding}
-label-mode-background = ${color.shade2}
-label-mode-foreground = ${color.fg}
-
 label-focused = %name% %icon%
-label-focused-foreground = ${color.fg-alt}
-label-focused-background = ${color.shade8}
-label-focused-padding = ${self.padding}
-
 label-unfocused = %name% %icon%
-label-unfocused-foreground = ${color.fg}
-label-unfocused-background = ${color.shade6}
-label-unfocused-padding = ${self.padding}
-
 label-visible = %name% %icon%
-label-visible-padding = ${self.padding}
-
 label-urgent = %name% %icon%
-label-urgent-foreground = ${color.fg}
-label-urgent-background = ${color.curgent}
+
+label-mode-padding = ${self.padding}
+label-focused-padding = ${self.padding}
+label-unfocused-padding = ${self.padding}
+label-visible-padding = ${self.padding}
 label-urgent-padding = ${self.padding}
 
 
-ws-icon-1 = "1:1: "
-ws-icon-2 = "2:2: "
-ws-icon-3 = "3:3: "
-ws-icon-4 = "4:4: "
-ws-icon-5 = "5:5: "
-ws-icon-6 = "6:6: "
+label-mode-background = ${color.shade2}
+label-mode-foreground = ${color.fg}
+
+label-focused-foreground = ${color.acolor}
+label-focused-background = ${color.shade8}
+
+label-unfocused-foreground = ${color.fg}
+label-unfocused-background = ${color.shade6}
+
+label-visible-foreground = ${color.fg}
+label-visible-background = ${color.shade6}
+
+label-urgent-foreground = ${color.fg}
+label-urgent-background = ${color.curgent}
+
+label-focused-underline = ${color.acolor}
+
+
+ws-icon-1 = "1:1 "
+ws-icon-2 = "2:2 "
+ws-icon-3 = "3:3 "
+ws-icon-4 = "4:4 "
+ws-icon-5 = "5:5 "
+ws-icon-6 = "6:6 "
 ws-icon-7 = "7"
 ws-icon-8 = "8"
 ws-icon-9 = "9"
-ws-icon-0 = "10:10: "
+ws-icon-0 = "10:10 "
 
 
 
@@ -183,46 +232,47 @@ ws-icon-0 = "10:10: "
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-padding = 2
+label-focused-padding = 0
 
 label-occupied = %index%
-label-occupied-padding = 2
+label-occupied-padding = 0
 
 label-urgent = %index%!
-label-urgent-padding = 2
+label-urgent-padding = 0
 
 label-empty = %index%
-label-empty-padding = 2
+label-empty-padding = 0
 
 
 
 [module/github]
 type = custom/text
 content = 
-content-padding = 5
+content-padding = 3
 content-foreground = ${color.fg-alt}
-click-left = chromium https://www.github.com/golim
+click-left = chromium https://www.github.com/golim/
 
-
+[module/documents]
+type = custom/text
+content = 
+content-foreground = ${color.fg-alt}
+click-left = terminator -e 'cd ~/Documenti; exec zsh'
 
 [module/date]
 type = internal/date
 interval = 5
 
 date =
-date-alt = "  %d/%m/%Y"
+date-alt = "  %d/%m/%Y"
 
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
+time =  %H:%M
+time-alt =  %H:%M:%S
 
 label = %time%%date%
 
 label-padding = 2
 
 label-foreground = ${color.fg-alt}
-label-underline = ${color.fg-alt}
 
 
 
@@ -251,45 +301,13 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
+click-left = exec 
+
 format-volume-padding = 2
 format-muted-padding = 2
 
 format-volume-background = ${color.shade7}
 format-muted-background = ${color.shade7}
-
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-poll-interval = 5
-
-format-charging =   <ramp-capacity> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full = Fully charged
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-format-charging-padding = 2
-format-discharging-padding = 2
-
-format-charging-background = ${color.shade6}
-format-discharging-background = ${color.shade6}
-
-ramp-capacity-0-foreground = ${color.red}
-ramp-capacity-1-foreground = ${color.red}
-ramp-capacity-foreground   = ${color.fg}
-ramp-capacity-4-foreground = ${color.green}
-
 
 
 
@@ -305,7 +323,44 @@ label =  %percentage%%
 
 label-padding = 2
 
-label-background = ${color.shade5}
+label-background = ${color.shade6}
+
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+poll-interval = 5
+
+format-charging =  <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = Fully charged
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+format-charging-padding = 2
+format-discharging-padding = 2
+
+format-charging-background = ${color.shade5}
+format-discharging-background = ${color.shade5}
+
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-1-foreground = ${color.yellow}
+ramp-capacity-foreground   = ${color.green}
+ramp-capacity-4-foreground = ${color.green}
+
+
 
 
 [module/flameshot]

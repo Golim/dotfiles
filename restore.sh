@@ -17,6 +17,7 @@ echo "Restoring files..."
 
 cp i3.conf ~/.i3/config
 cp display.sh ~/.display.sh
+cp wallpaper.sh ~/.wallpaper.sh
 cp i3status.conf ~/.i3status/config
 cp bashrc ~/.bashrc
 cp zshrc ~/.zshrc

@@ -8,6 +8,7 @@ cd files
 echo "Copying i3 config file..."
 cp ~/.i3/config i3.conf
 cp ~/.display.sh display.sh
+cp ~/.wallpaper.sh wallpaper.sh
 
 echo "Copying i3status config file..."
 cp ~/.i3status/config i3status.conf

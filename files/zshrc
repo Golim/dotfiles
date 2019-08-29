@@ -33,8 +33,12 @@ alias edit='mousepad'
 
 alias clock='tty-clock -b -c'
 
+alias open='xdg-open'
+
 # Folder
 alias doc='cd /home/golim/Documenti'
+alias reti='cd /home/golim/Documenti/reti-avanzate'
+alias bfree='cd /home/golim/Documenti/bFree'
 alias polybar='cd /home/golim/.config/polybar'
 alias i3config='mousepad /home/golim/.i3/config &'
 
@@ -78,4 +82,14 @@ ex () {
   else
     echo "'$1' is not a valid file"
   fi
+}
+
+# set an ad-hoc GUI timer
+# Credits: https://github.com/pbrisbin/
+timer() {
+  local N=$1; shift
+
+  (sleep $N && zenity --info --title="Time's Up" --text="${*:-BING}") &
+	disown  
+	echo "timer set for $N"
 }
