@@ -1,4 +1,4 @@
-;==========================================================
+==========================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -31,11 +31,14 @@ trans = #00000000
 white = #FFFFFF
 black = #000000
 
-bg = #FFFFFF
-fg = #2E2E2E
-fg-alt = #424242
+bg = #2E2E2E
+fg = #FFFFFF
+fg-alt = #F0F0F0
 
-acolor = #039be5
+#bg = trans
+modules_bg = #2E2E2E
+
+acolor = #fdd835
 curgent = #e53935
 coccupied = #43a047
 
@@ -66,7 +69,7 @@ blue-gray = #546e7a
 ;===================;
 
 [bar/mybar]
-monitor = eDP1
+monitor = eDP-1
 width = 100%
 height = 35
 radius = 1
@@ -94,7 +97,7 @@ module-margin-right = 0
 ;       FONT        ;
 ;===================;
 
-font-0 = Fantasque Sans Mono:pixelsize=14;2"
+font-0 = Fantasque Sans Mono:pixelsize=13;2"
 font-1 = Font Awesome:style=regular:size=13:antialias=true;2”
 font-2 = siji:pixelsize=13;1
 
@@ -110,50 +113,8 @@ tray-position = right
 tray-padding = 2
 
 
-tray-background = ${color.shade4}
+tray-background = ${color.modules_bg}
 tray-foreground = ${color.fg}
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-
-;===================;
-;    SECOND BAR     ;
-;===================;
-[bar/second]
-monitor = HDMI1
-width = 100%
-height = 35
-radius = 1
-fixed-center = true
-
-background = ${color.bg}
-foreground = ${color.fg}
-
-line-size = 3
-
-border-top-size = 10
-border-right-size = 30
-border-left-size = 30
-border-bottom-size = 0
-
-border-color = #00000000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-
-font-0 = fixed:pixelsize=13;1
-font-1 = Font Awesome:style=regular:size=13:antialias=true;2”
-font-2 = siji:pixelsize=13;1
-
-
-
-modules-left = bspwm i3
-modules-center = date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -197,17 +158,17 @@ label-visible-padding = ${self.padding}
 label-urgent-padding = ${self.padding}
 
 
-label-mode-background = ${color.shade2}
+label-mode-background = ${color.modules_bg}
 label-mode-foreground = ${color.fg}
 
 label-focused-foreground = ${color.acolor}
-label-focused-background = ${color.shade8}
+label-focused-background = ${color.modules_bg}
 
 label-unfocused-foreground = ${color.fg}
-label-unfocused-background = ${color.shade6}
+label-unfocused-background = ${color.modules_bg}
 
 label-visible-foreground = ${color.fg}
-label-visible-background = ${color.shade6}
+label-visible-background = ${color.modules_bg}
 
 label-urgent-foreground = ${color.fg}
 label-urgent-background = ${color.curgent}
@@ -225,7 +186,6 @@ ws-icon-7 = "7"
 ws-icon-8 = "8"
 ws-icon-9 = "9"
 ws-icon-0 = "10:10 "
-
 
 
 [module/bspwm]
@@ -250,7 +210,7 @@ type = custom/text
 content = 
 content-padding = 3
 content-foreground = ${color.fg-alt}
-click-left = chromium https://www.github.com/golim/
+click-left = firefox https://www.github.com/golim/
 
 [module/documents]
 type = custom/text
@@ -273,6 +233,7 @@ label = %time%%date%
 label-padding = 2
 
 label-foreground = ${color.fg-alt}
+label-background = ${color.modules_bg}
 
 
 
@@ -286,7 +247,7 @@ click-left = exec playerctl play-pause
 
 format-padding = 2
 
-format-background = ${color.shade8}
+format-background = ${color.modules_bg}
 format-foreground = ${color.fg-alt}
 
 
@@ -306,7 +267,7 @@ click-left = exec
 format-volume-padding = 2
 format-muted-padding = 2
 
-format-volume-background = ${color.shade7}
+format-volume-background = ${color.modules_bg}
 format-muted-background = ${color.shade7}
 
 
@@ -314,7 +275,7 @@ format-muted-background = ${color.shade7}
 [module/backlight]
 type = internal/xbacklight
 
-output = eDP1
+output = eDP-1
 
 enable-scroll = true
 
@@ -323,7 +284,7 @@ label =  %percentage%%
 
 label-padding = 2
 
-label-background = ${color.shade6}
+label-background = ${color.modules_bg}
 
 
 
@@ -352,46 +313,13 @@ ramp-capacity-4 = 
 format-charging-padding = 2
 format-discharging-padding = 2
 
-format-charging-background = ${color.shade5}
-format-discharging-background = ${color.shade5}
+format-charging-background = ${color.modules_bg}
+format-discharging-background = ${color.modules_bg}
 
 ramp-capacity-0-foreground = ${color.red}
 ramp-capacity-1-foreground = ${color.yellow}
 ramp-capacity-foreground   = ${color.green}
 ramp-capacity-4-foreground = ${color.green}
-
-
-
-
-[module/flameshot]
-type = custom/text
-content = 
-
-click-left = exec flameshot gui
-
-content-padding = 4
-
-content-background = ${color.shade4}
-content-foreground = ${color.fg}
-
-
-
-
-[module/wifi]
-type = custom/text
-content = 
-
-click-left = exec nm-applet
-
-content-padding = 4
-
-content-background = ${color.shade3}
-content-foreground = ${color.fg}
-
-
-
-[settings]
-screenchange-reload = true
 
 
 [global/wm]
