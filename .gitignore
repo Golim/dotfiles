@@ -1,2 +1,5 @@
-#Backup directory
+# Backup directory
 backup/
+
+# Ibstalled Packages List
+files/pkglist/

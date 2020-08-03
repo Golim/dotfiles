@@ -1,8 +1,11 @@
-  export ZSH="/home/golim/.oh-my-zsh"
+export ZSH="/home/golim/.oh-my-zsh"
 
 
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+ZSH_THEME="bira"
 
+# Remove username from prompt
+DEFAULT_USER=$USER
 
 # HIST_STAMPS="mm/dd/yyyy"
 
@@ -17,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -la -c -g'
 alias l='ls -l -c -g'
 
-alias cl='clear'
+# alias cl='clear'
 
 alias mkdir='mkdir -p'
 
@@ -93,3 +96,10 @@ timer() {
 	disown  
 	echo "timer set for $N"
 }
+
+# Argcomplete enabler for genius: TODO
+autoload bashcompinit
+bashcompinit
+source ~/.bash_completion.d/python-argcomplete
+
+eval "$(register-python-argcomplete /usr/local/bin/genius)"
